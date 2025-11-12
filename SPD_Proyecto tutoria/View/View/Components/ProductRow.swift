@@ -12,26 +12,14 @@ struct ProductRow: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
-            AsyncImage(url: URL(string: product.thumbnail)) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100)
-                    .background(.quinary.opacity(0.2))
-                    .clipShape(.rect(cornerRadius: 12))
-            } placeholder: {
-                Image(systemName: "photo.fill")
-            }
+            
+            Thumbnail(thumbnail: product.thumbnail)
             
             VStack(alignment: .leading, spacing: 16) {
                 Text(product.title)
                     .font(.headline)
-                Text(product.category.rawValue.capitalized)
-                    .font(.caption)
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 8)
-                    .background(.quinary.opacity(0.2))
-                    .clipShape(.rect(cornerRadius: 12))
+                
+                ProductTag(tagValue: product.category.rawValue)
                 
                 Text(product.description)
                     .font(.subheadline)
