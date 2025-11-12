@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ProductsView.swift
 //  SPD_Proyecto tutoria
 //
 //  Created by Ara Ruiz Ruiz on 10/11/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ProductsView: View {
     @ObservedObject var vm = ProductsVM()
     
     var body: some View {
@@ -21,5 +21,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ProductsView()
 }

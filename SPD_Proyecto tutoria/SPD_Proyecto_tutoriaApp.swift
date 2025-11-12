@@ -11,7 +11,7 @@ import SwiftUI
 struct SPD_Proyecto_tutoriaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ProductsView()
         }
     }
 }
