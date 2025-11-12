@@ -19,7 +19,7 @@
 		44D7A64E2EC48155006D93EE /* ProductsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7A64D2EC48155006D93EE /* ProductsVM.swift */; };
 		44D7A6652EC493A7006D93EE /* ProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7A6642EC493A7006D93EE /* ProductRow.swift */; };
 		44D7A6672EC496A6006D93EE /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7A6662EC496A6006D93EE /* Thumbnail.swift */; };
-		44D7A6692EC497A1006D93EE /* ProductTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7A6682EC497A1006D93EE /* ProductTag.swift */; };
+		44D7A6692EC497A1006D93EE /* CategoryChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7A6682EC497A1006D93EE /* CategoryChip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		44D7A64D2EC48155006D93EE /* ProductsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsVM.swift; sourceTree = "<group>"; };
 		44D7A6642EC493A7006D93EE /* ProductRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRow.swift; sourceTree = "<group>"; };
 		44D7A6662EC496A6006D93EE /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
-		44D7A6682EC497A1006D93EE /* ProductTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTag.swift; sourceTree = "<group>"; };
+		44D7A6682EC497A1006D93EE /* CategoryChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryChip.swift; sourceTree = "<group>"; };
 		44F551672EC24FC000A84A85 /* SPD_Proyecto tutoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SPD_Proyecto tutoria.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -113,7 +113,7 @@
 			children = (
 				44D7A6642EC493A7006D93EE /* ProductRow.swift */,
 				44D7A6662EC496A6006D93EE /* Thumbnail.swift */,
-				44D7A6682EC497A1006D93EE /* ProductTag.swift */,
+				44D7A6682EC497A1006D93EE /* CategoryChip.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 			files = (
 				449C58942EC3A80A00130C2A /* DataModel.swift in Sources */,
 				449C58952EC3A80A00130C2A /* DataRepository.swift in Sources */,
-				44D7A6692EC497A1006D93EE /* ProductTag.swift in Sources */,
+				44D7A6692EC497A1006D93EE /* CategoryChip.swift in Sources */,
 				44D7A64E2EC48155006D93EE /* ProductsVM.swift in Sources */,
 				449C58962EC3A80A00130C2A /* JSONLoader.swift in Sources */,
 				44D7A6652EC493A7006D93EE /* ProductRow.swift in Sources */,

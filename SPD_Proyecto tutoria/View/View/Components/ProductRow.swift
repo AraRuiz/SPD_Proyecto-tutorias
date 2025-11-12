@@ -19,7 +19,7 @@ struct ProductRow: View {
                 Text(product.title)
                     .font(.headline)
                 
-                ProductTag(tagValue: product.category.rawValue)
+                CategoryChip(tagValue: product.category.rawValue)
                 
                 Text(product.description)
                     .font(.subheadline)
