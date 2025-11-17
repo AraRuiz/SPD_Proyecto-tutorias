@@ -10,6 +10,7 @@ import Combine
 final class ProductsVM: ObservableObject {
     @Published private(set) var products: [Product]
     private let repository: DataRepository
+    @Published var favourites = Set<Int>()
     
     init(repository: DataRepository = Repository()) {
         self.repository = repository
@@ -21,5 +22,18 @@ final class ProductsVM: ObservableObject {
             print(error)
         }
     }
+    
+    func isFavourite(id: Int) -> Bool {
+        favourites.contains(id)
+    }
+    
+    func updateFavourites(id: Int) {
+        if favourites.contains(id) {
+            favourites.remove(id)
+        } else {
+            favourites.insert(id)
+        }
+    }
+    
     
 }
