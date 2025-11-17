@@ -13,9 +13,15 @@ struct ProductsView: View {
     var body: some View {
         NavigationStack {
             List(vm.products) { product in
-                ProductRow(product: product)
+                NavigationLink(value: product) {
+                    ProductRow(product: product)
+                }
+                
             }
             .navigationTitle("Products")
+            .navigationDestination(for: Product.self) { product in
+                
+            }
         }
     }
 }
