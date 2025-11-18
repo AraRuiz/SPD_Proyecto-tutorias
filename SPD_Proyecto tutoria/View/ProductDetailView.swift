@@ -43,25 +43,23 @@ struct ProductDetailView: View {
             Text(product.description)
                 .fontWeight(.light)
             
+            Spacer()
+            
             Button {
                 print("Add to cart")
             } label: {
-                Text("Add to cart " )
+                Text("Add to cart")
+                    .frame(maxWidth: .infinity) // Esto garantiza que el texto rellene el botón
             }
-            .padding(8)
+            .padding(.vertical, 16)
             .background(.black)
             .foregroundStyle(.white)
             .font(.title3)
             .fontWeight(.bold)
             .clipShape(.rect(cornerRadius: 12))
+            
         }
         .padding()
-        
-        
-        
-        
-        
-        
     }
     
 }
