@@ -11,7 +11,7 @@ struct ProductDetailView: View {
     let product: Product
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(spacing: 16) {
             AsyncImage(url: URL(string: product.thumbnail)) { image in
                 image
                     .resizable()
@@ -37,6 +37,7 @@ struct ProductDetailView: View {
             
             HStack {
                 CategoryChip(tagValue: product.category.rawValue)
+                Spacer()
             }
             
             Text(product.description)
@@ -53,9 +54,6 @@ struct ProductDetailView: View {
             .font(.title3)
             .fontWeight(.bold)
             .clipShape(.rect(cornerRadius: 12))
-            .frame(width: .infinity)
-            
-
         }
         .padding()
         
