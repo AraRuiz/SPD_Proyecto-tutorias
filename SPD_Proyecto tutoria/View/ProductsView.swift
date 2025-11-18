@@ -12,7 +12,7 @@ struct ProductsView: View {
     
     var body: some View {
         NavigationStack {
-            List(vm.products) { product in
+            List(vm.filteredProducts) { product in
                 NavigationLink(value: product) {
                     ProductRow(product: product)
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
@@ -26,11 +26,16 @@ struct ProductsView: View {
                             .tint(isFavourite ? .gray : .yellow)
                         }
                 }
+                
             }
             .navigationTitle("Products")
             .navigationDestination(for: Product.self) { product in
                 ProductDetailView(product: product)
             }
+            .searchable(text: $vm.search,
+                        prompt: Text("Search by product name")
+            )
+            
         }
     }
 }

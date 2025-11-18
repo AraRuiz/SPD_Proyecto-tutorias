@@ -5,12 +5,21 @@
 //  Created by Ara Ruiz Ruiz on 12/11/25.
 //
 
+import Foundation
 import Combine
 
 final class ProductsVM: ObservableObject {
-    @Published private(set) var products: [Product]
     private let repository: DataRepository
+
+    @Published private(set) var products: [Product]
     @Published var favourites = Set<Int>()
+    @Published var search = ""
+    
+    var filteredProducts: [Product] {
+        products.filter {
+            search.isEmpty || $0.title.range(of: search, options: [.caseInsensitive, .diacriticInsensitive]) != nil
+        }
+    }
     
     init(repository: DataRepository = Repository()) {
         self.repository = repository
