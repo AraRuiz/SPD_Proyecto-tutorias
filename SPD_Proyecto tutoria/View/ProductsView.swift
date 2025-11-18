@@ -15,12 +15,21 @@ struct ProductsView: View {
             List(vm.products) { product in
                 NavigationLink(value: product) {
                     ProductRow(product: product)
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            let isFavourite = vm.isFavourite(id: product.id)
+                            Button {
+                                vm.updateFavourites(id: product.id)
+                            } label: {
+                                Label(isFavourite ? "Delete" : "Add", systemImage: isFavourite ?  "star.slash" : "star")
+                                
+                            }
+                            .tint(isFavourite ? .gray : .yellow)
+                        }
                 }
-                
             }
             .navigationTitle("Products")
             .navigationDestination(for: Product.self) { product in
-                
+                ProductDetailView(product: product)
             }
         }
     }
