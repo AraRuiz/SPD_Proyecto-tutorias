@@ -28,7 +28,9 @@ struct Product: Identifiable, Codable, Hashable {
     }
 }
 
-enum ProductCategory: String, Codable, CaseIterable {
+enum ProductCategory: String, Codable, CaseIterable, Identifiable, CustomStringConvertible {
+    var id: String { rawValue }
+    
     case beauty
     case fragrances
     case furniture
@@ -40,6 +42,33 @@ enum ProductCategory: String, Codable, CaseIterable {
     case mensShoes = "mens-shoes"
     case mensWatches = "mens-watches"
     case mobileAccessories = "mobile-accessories"
+    
+    var description: String {
+        switch self {
+        case .beauty:
+            "Beauty"
+        case .fragrances:
+            "Fragances"
+        case .furniture:
+            "Furniture"
+        case .groceries:
+            "Groceries"
+        case .laptops:
+            "Laptops"
+        case .homeDecoration:
+            "Home Decoration"
+        case .kitchenAccessories:
+            "Kitchen Accessories"
+        case .mensShirts:
+            "Mens Shirts"
+        case .mensShoes:
+            "Mens Shoes"
+        case .mensWatches:
+            "Mens Watches"
+        case .mobileAccessories:
+            "Mobile Accessories"
+        }
+    }
 }
 
 extension Product {

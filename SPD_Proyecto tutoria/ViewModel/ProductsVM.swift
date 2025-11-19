@@ -15,21 +15,18 @@ final class ProductsVM: ObservableObject {
     @Published var favourites = Set<Int>()
     @Published var search = ""
     @Published var onlyFavourites = false
+    @Published var selectedCategory: ProductCategory? = nil
     
     var filteredProducts: [Product] {
-        var filteredProducts = products
-        if onlyFavourites {
-            filteredProducts = favouritesProducts
-        }
-        
-        return filteredProducts.filter {
-            search.isEmpty || $0.title.range(of: search, options: [.caseInsensitive, .diacriticInsensitive]) != nil
-        }
+        products
+            .filter { !onlyFavourites || favourites.contains($0.id) }
+            .filter { selectedCategory == nil || $0.category == selectedCategory }
+            .filter { search.isEmpty || $0.title.range(of: search, options: [.caseInsensitive, .diacriticInsensitive]) != nil }
     }
     
-    var favouritesProducts: [Product] {
+    var categoryProducts: [Product] {
         products.filter {
-            isFavourite(id: $0.id)
+            $0.category == selectedCategory
         }
     }
     

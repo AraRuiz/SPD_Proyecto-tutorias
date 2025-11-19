@@ -35,6 +35,37 @@ struct ProductsView: View {
                             .foregroundStyle(onlyFavourites ? .yellow : .gray)
                     }
                 }
+                
+                ToolbarItem {
+                    Menu {
+                        Button {
+                            vm.selectedCategory = nil
+                        } label: {
+                            Text("All")
+                            if vm.selectedCategory == nil {
+                                Image(systemName: "checkmark")
+                            }
+                        }
+
+                        ForEach(ProductCategory.allCases) { category in
+                            Button {
+                                vm.selectedCategory = category
+                            } label: {
+                                HStack {
+                                    Text(category.description)
+                                    if vm.selectedCategory == category {
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
+                                
+                            }
+                        }
+                    } label: {
+                        Label("Categories", systemImage: "tag")
+                    }
+
+                }
+
             }
         }
     }
