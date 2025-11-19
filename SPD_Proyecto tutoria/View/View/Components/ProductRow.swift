@@ -9,13 +9,25 @@ import SwiftUI
 
 struct ProductRow: View {
     let product: Product
-    
+    @EnvironmentObject var vm: ProductsVM
+
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
             
-            Thumbnail(thumbnail: product.thumbnail)
+            ZStack(alignment: .topLeading) {
+                Thumbnail(thumbnail: product.thumbnail)
+                
+                if vm.isFavourite(id: product.id) {
+                    Image(systemName: "star.circle.fill")
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(.yellow, .white)
+                        .offset(x: -8, y: -8)
+                }
+                
+            }
             
             VStack(alignment: .leading, spacing: 16) {
+                
                 Text(product.title)
                     .font(.headline)
                 
@@ -38,4 +50,5 @@ struct ProductRow: View {
 #Preview {
     ProductRow(product: Product.test)
         .padding()
+        .environmentObject(ProductsVM(repository: RepositoryTest()))
 }

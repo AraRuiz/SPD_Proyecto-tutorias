@@ -1,14 +1,7 @@
-//
-//  ProductsView.swift
-//  SPD_Proyecto tutoria
-//
-//  Created by Ara Ruiz Ruiz on 10/11/25.
-//
-
 import SwiftUI
 
 struct ProductsView: View {
-    @ObservedObject var vm = ProductsVM()
+    @EnvironmentObject var vm: ProductsVM
     
     var body: some View {
         NavigationStack {
@@ -21,25 +14,33 @@ struct ProductsView: View {
                                 vm.updateFavourites(id: product.id)
                             } label: {
                                 Label(isFavourite ? "Delete" : "Add", systemImage: isFavourite ?  "star.slash" : "star")
-                                
                             }
                             .tint(isFavourite ? .gray : .yellow)
                         }
                 }
-                
             }
             .navigationTitle("Products")
             .navigationDestination(for: Product.self) { product in
                 ProductDetailView(product: product)
             }
-            .searchable(text: $vm.search,
-                        prompt: Text("Search by product name")
-            )
-            
+            .searchable(text: $vm.search, prompt: Text("Search by product name"))
+            .toolbar {
+                ToolbarItem {
+                    let onlyFavourites = vm.onlyFavourites
+                    Button {
+                        vm.onlyFavourites.toggle()
+                    } label: {
+                        Image(systemName: "star.fill")
+                            .symbolRenderingMode(.monochrome)
+                            .foregroundStyle(onlyFavourites ? .yellow : .gray)
+                    }
+                }
+            }
         }
     }
 }
 
 #Preview {
     ProductsView()
+        .environmentObject(ProductsVM())
 }

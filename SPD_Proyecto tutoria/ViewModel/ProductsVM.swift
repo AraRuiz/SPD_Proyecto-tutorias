@@ -14,10 +14,22 @@ final class ProductsVM: ObservableObject {
     @Published private(set) var products: [Product]
     @Published var favourites = Set<Int>()
     @Published var search = ""
+    @Published var onlyFavourites = false
     
     var filteredProducts: [Product] {
-        products.filter {
+        var filteredProducts = products
+        if onlyFavourites {
+            filteredProducts = favouritesProducts
+        }
+        
+        return filteredProducts.filter {
             search.isEmpty || $0.title.range(of: search, options: [.caseInsensitive, .diacriticInsensitive]) != nil
+        }
+    }
+    
+    var favouritesProducts: [Product] {
+        products.filter {
+            isFavourite(id: $0.id)
         }
     }
     

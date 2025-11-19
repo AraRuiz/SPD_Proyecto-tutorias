@@ -9,17 +9,33 @@ import SwiftUI
 
 struct ProductDetailView: View {
     let product: Product
+    @EnvironmentObject var vm: ProductsVM
     
     var body: some View {
         VStack(spacing: 16) {
-            AsyncImage(url: URL(string: product.thumbnail)) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .background(.quinary.opacity(0.2))
-            } placeholder: {
-                Image(systemName: "photo.fill")
+            
+            ZStack(alignment: .topTrailing) {
+                AsyncImage(url: URL(string: product.thumbnail)) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .background(.quinary.opacity(0.2))
+                } placeholder: {
+                    Image(systemName: "photo.fill")
+                }
+                
+                let isFavourite = vm.isFavourite(id: product.id)
+                Button {
+                    vm.updateFavourites(id: product.id)
+                } label: {
+                    Image(systemName: "star.fill")
+                        .font(.title)
+                }
+                .offset(x: -8, y: 8)
+                .tint(isFavourite ? .yellow : .gray)
+                    
             }
+            
             
             HStack {
                 Text(product.title)
@@ -66,4 +82,5 @@ struct ProductDetailView: View {
 
 #Preview {
     ProductDetailView(product: Product.test)
+        .environmentObject(ProductsVM(repository: RepositoryTest()))
 }
